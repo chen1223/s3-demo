@@ -1,0 +1,27 @@
+.desc {
+  max-width: 800px;
+  width: 80%;
+  margin: 2rem auto;
+  margin-left: 0;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  color: #efefef;
+}
+
+.img-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+.img {
+  width: max(calc(33% - 20px), 300px);
+  margin-bottom: 20px;
+  .pic {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}

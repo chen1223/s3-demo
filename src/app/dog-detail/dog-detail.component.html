@@ -1,0 +1,14 @@
+<div class="page-wrapper">
+  <a routerLink="/" class="back-link">< Back</a>
+  <h1 class="title">{{ dogDetail?.name }}</h1>
+  <section class="desc-container">
+    <p class="desc">{{ dogDetail?.desc }}</p>
+  </section>
+  <section class="dog-images">
+    <ul class="img-list">
+      <li class="img" *ngFor="let img of dogDetail?.imgList">
+        <img class="pic" [src]="img" [alt]="dogDetail?.name">
+      </li>
+    </ul>
+  </section>
+</div>
