@@ -1,0 +1,40 @@
+# CodeBuild Version
+version: 0.2
+
+env:
+  shell: bash
+  variables:
+    BUCKET_NAME: "s3-demo"
+    DISTRIBUTION_ID: "E2E0K0WPAWHH6K"
+
+phases:
+  install:
+    commands:
+      # Install the sudo package
+      - apt-get update -y
+      - apt-get install -y sudo
+      # Download and Install NodeJS 12.0
+      - curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+      - sudo apt-get install -y nodejs
+      - nodejs -v
+      - echo Installing source NPM dependencies...
+      # Install http drivers for node
+      - sudo apt-get install -y apt-transport-https build-essential
+      - npm install
+
+  build:
+    commands:
+      # Builds Angular application
+      - echo Build started on `date`
+      - npm run build-prod
+
+  post_build:
+    commands:
+      # Clear out the old contents in the bucket connected to CloudFronts
+      - aws s3 rm s3://${BUCKET_NAME} --recursive
+      - echo S3 bucket ${BUCKET_NAME} is cleared.
+      # Copy Angular build output (dist) folder to S3 bucket
+      - aws s3 cp dist s3://${BUCKET_NAME} --recursive
+      # Create CloudFront invalidation to clear CloudFront cache
+      - aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths "/*"
+      - echo Build completed on `date`
