@@ -1,6 +1,16 @@
 # S3Demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+This is a simple demo website for the [Complete guide of deploying static websites on AWS](https://simpleweblearning.com/tag/complete-guide-of-deploying-static-websites-on-aws/) tutorial series. In the series, the Frontend will be hosted as static website on [AWS S3](https://aws.amazon.com/s3/) and by the end of the series, a CICD pipeline will be setup. So that a build process will be triggered by code changes.
+
+AWS Services used in the series:
+ - [S3](https://aws.amazon.com/s3/)
+ - [CloudFront](https://aws.amazon.com/cloudfront/)
+ - [Route 53](https://aws.amazon.com/route53/)
+ - [Certificate Manager](https://aws.amazon.com/certificate-manager/)
+ - [CloudWatch](https://aws.amazon.com/cloudwatch/)
+ - [WAF](https://aws.amazon.com/waf/)
+ - [CodeBuild](https://aws.amazon.com/codebuild/)
+ - [CodePipeline](https://aws.amazon.com/codepipeline/)
 
 ## Development server
 
